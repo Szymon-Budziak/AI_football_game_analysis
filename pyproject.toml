@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ai-football-game-analysis"
+version = "0.1.0"
+description = "AI Football Game Analysis using YOLO"
+authors = [Szymon Budziak]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "src", from = "." },]
+
+[tool.poetry.dependencies]
+python = "<4.0,>=3.11"
+ultralytics = "^8.2.62"
+supervision = "^0.22.0"
+roboflow = "^1.1.36"
+
+[tool.poetry.group.dev.dependencies]
+notebook = "^7.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
