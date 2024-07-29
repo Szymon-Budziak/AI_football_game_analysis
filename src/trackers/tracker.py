@@ -10,7 +10,7 @@ from ultralytics import YOLO
 __all__ = ["Tracker"]
 
 sys.path.append('../')
-from utils import get_center_of_bbox, get_bbox_width
+from utils import get_center_of_bbox, get_bbox_width, get_foot_position
 
 
 class Tracker:
@@ -26,7 +26,8 @@ class Tracker:
         df_ball_positions = df_ball_positions.interpolate()
         df_ball_positions = df_ball_positions.bfill()  # back fill to fill first missing values, if there are any
 
-        ball_positions = [{1: {'bbox': x}} for x in df_ball_positions.to_numpy().tolist()]
+        ball_positions = [{1: {"bbox": x}} for x in df_ball_positions.to_numpy().tolist()]
+
         return ball_positions
 
     def detect_frames(self, frames: list) -> list:
@@ -198,3 +199,15 @@ class Tracker:
             output_video_frames.append(frame)
 
         return output_video_frames
+
+    def add_position_to_tracks(self, tracks):
+        for obj, obj_tracks in tracks.items():
+            for frame_num, track in enumerate(obj_tracks):
+                for track_id, track_info in track.items():
+                    bbox = track_info['bbox']
+                    if obj == 'ball':
+                        position = get_center_of_bbox(bbox)  # center of ball
+                    else:
+                        position = get_foot_position(bbox)  # foot position of player/referee
+
+                    tracks[obj][frame_num][track_id]['position'] = position
