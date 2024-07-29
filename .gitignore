@@ -163,3 +163,4 @@ cython_debug/
 poetry.lock
 *.avi
 *.mp4
+output_videos/

@@ -2,7 +2,7 @@ from ultralytics import YOLO
 
 if __name__ == "__main__":
     # Initialize model
-    # model = YOLO("yolov8m")
+    # model = YOLO("models/yolov8m.pt")
     model = YOLO("models/best.pt")
 
     # Inference
