@@ -6,7 +6,7 @@ Players are assigned to teams based on their t-shirt colors using **K-means** fo
 This allows to **measure a team's ball acquisition** percentage during a match.
 
 **Optical flow** was employed to measure camera movement between frames, enabling precise measurement of player
-movement.**Perspective transformation** was implemented to represent the scene's depth and perspective, allowing us to
+movement. **Perspective transformation** was implemented to represent the scene's depth and perspective, allowing us to
 measure player movement in meters rather than pixels.
 
 Finally, player speed and the distance covered was calculated to provide in depth statistics.
